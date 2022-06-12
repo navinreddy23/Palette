@@ -155,7 +155,7 @@ cy_rslt_t tcp_client_recv_handler(cy_socket_t socket_handle, void *arg);
 cy_rslt_t tcp_disconnection_handler(cy_socket_t socket_handle, void *arg);
 cy_rslt_t connect_to_tcp_server(cy_socket_sockaddr_t address);
 void read_uart_input(uint8_t* input_buffer_ptr);
-void throughput_test(void);
+void tcp_transmit_recieve(void);
 
 #if(USE_AP_INTERFACE)
     static cy_rslt_t softap_start(void);
@@ -296,7 +296,7 @@ void tcp_client_task(void *arg)
         }
         else
         {
-        	throughput_test();
+        	tcp_transmit_recieve();
         }
     }
  }
@@ -559,7 +559,7 @@ cy_rslt_t connect_to_tcp_server(cy_socket_sockaddr_t address)
 }
 
 
-void throughput_test(void)
+void tcp_transmit_recieve(void)
 {
 	cy_rslt_t result;
 	char message_buffer[50] = "Hello from PSoC6";
